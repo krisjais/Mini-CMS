@@ -250,10 +250,11 @@ function ArticleForm({
 }
 
 /* ───────── Article Card ───────── */
-function ArticleCard({ article, onEdit, onDelete, isDeleting }) {
+function ArticleCard({ article, onView, onEdit, onDelete, isDeleting }) {
   return (
     <article
-      className="group bg-surface rounded-2xl border border-border shadow-sm
+      onClick={() => onView(article)}
+      className="group cursor-pointer bg-surface rounded-2xl border border-border shadow-sm
                  hover:shadow-lg hover:border-primary/30 hover:-translate-y-0.5
                  transition-all duration-300 flex flex-col"
     >
@@ -292,14 +293,20 @@ function ArticleCard({ article, onEdit, onDelete, isDeleting }) {
 
         <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
           <button
-            onClick={() => onEdit(article)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onEdit(article);
+            }}
             className="p-2 rounded-lg text-muted hover:text-primary hover:bg-primary-light transition-colors duration-150 cursor-pointer"
             title="Edit"
           >
             <PencilIcon />
           </button>
           <button
-            onClick={() => onDelete(article._id)}
+            onClick={(e) => {
+              e.stopPropagation();
+              onDelete(article._id);
+            }}
             disabled={isDeleting}
             className="p-2 rounded-lg text-muted hover:text-danger hover:bg-red-50 transition-colors duration-150 disabled:opacity-40 cursor-pointer"
             title="Delete"
@@ -359,6 +366,8 @@ export default function Home() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [deletingId, setDeletingId] = useState(null);
   const [editingId, setEditingId] = useState(null);
+  const [selectedArticle, setSelectedArticle] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const API = "http://localhost:3001/articles";
 
@@ -436,6 +445,17 @@ export default function Home() {
     setAuthor("");
     setEditingId(null);
   }
+
+  function handleViewArticle(article) {
+    setSelectedArticle(article);
+    setIsModalOpen(true);
+  }
+
+  function handleCloseModal() {
+    setSelectedArticle(null);
+    setIsModalOpen(false);
+  }
+
   /* ── Render ───────────────────────── */
   return (
     <div className="flex flex-col min-h-screen">
@@ -485,6 +505,7 @@ export default function Home() {
                 <ArticleCard
                   key={a._id}
                   article={a}
+                  onView={handleViewArticle}
                   onEdit={handleEdit}
                   onDelete={handleDelete}
                   isDeleting={deletingId === a._id}
@@ -493,6 +514,45 @@ export default function Home() {
             )}
           </div>
         </section>
+
+        {isModalOpen && selectedArticle && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4"
+            onClick={handleCloseModal}
+          >
+            <div
+              className="bg-surface rounded-2xl shadow-xl max-w-2xl w-full p-6 relative max-h-[80vh] overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={handleCloseModal}
+                className="absolute top-4 right-4 text-muted hover:text-foreground"
+                aria-label="Close"
+              >
+                ✕
+              </button>
+
+              <h3 className="text-2xl font-bold text-foreground mb-3">
+                {selectedArticle.title}
+              </h3>
+
+              <div className="mb-4 text-sm text-muted">
+                <span className="font-semibold text-foreground">Author:</span>{" "}
+                {selectedArticle.author || "Unknown"}
+              </div>
+
+              <div className="max-h-[50vh] overflow-y-auto text-foreground leading-relaxed whitespace-pre-wrap p-2 border border-border rounded-lg bg-background">
+                {selectedArticle.content}
+              </div>
+
+              {selectedArticle.createdAt && (
+                <p className="mt-4 text-xs text-muted">
+                  Published: {new Date(selectedArticle.createdAt).toLocaleString()}
+                </p>
+              )}
+            </div>
+          </div>
+        )}
       </main>
 
       {/* ── Footer ─── */}
