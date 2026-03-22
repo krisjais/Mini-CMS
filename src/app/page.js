@@ -447,8 +447,7 @@ export default function Home() {
   }
 
   function handleViewArticle(article) {
-    setSelectedArticle(article);
-    setIsModalOpen(true);
+    window.location.href = `/ARTICLES/${article._id}`;
   }
 
   function handleCloseModal() {
@@ -556,7 +555,7 @@ export default function Home() {
       </main>
 
       {/* ── Footer ─── */}
-      <footer className="border-t border-border py-6 mt-auto">
+      {/* <footer className="border-t border-border py-6 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted">
           <span>© {new Date().getFullYear()} Mini CMS. All rights reserved.</span>
           <span>
@@ -565,7 +564,7 @@ export default function Home() {
             <span className="text-primary font-medium">Tailwind CSS</span>
           </span>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 }
