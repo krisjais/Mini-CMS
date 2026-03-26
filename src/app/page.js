@@ -97,22 +97,22 @@ function SpinnerIcon({ className = "w-5 h-5" }) {
 /* ───────── Navbar ───────── */
 function Navbar({ articleCount }) {
   return (
-    <header className="sticky top-0 z-50 bg-surface/80 backdrop-blur-lg border-b border-border">
+    <header className="sticky top-0 z-50 bg-surface border-b border-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         <div className="flex items-center gap-3">
           {/* Logo mark */}
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center shadow-md shadow-primary/25">
-            <span className="text-white font-bold text-sm">CM</span>
+          <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shadow-sm">
+            <span className="text-white font-bold text-sm tracking-widest">CM</span>
           </div>
-          <h1 className="text-xl font-semibold tracking-tight text-foreground">
-            Mini CMS
+          <h1 className="text-xl font-bold tracking-tight text-foreground">
+            Mini <span className="text-primary">CMS</span>
           </h1>
         </div>
 
         {/* Article count badge */}
         <div className="flex items-center gap-2 text-sm text-muted">
-          <span className="hidden sm:inline">Articles</span>
-          <span className="inline-flex items-center justify-center min-w-[1.75rem] h-7 px-2 rounded-full bg-primary-light text-primary font-semibold text-xs">
+          <span className="hidden sm:inline font-medium">Articles</span>
+          <span className="inline-flex items-center justify-center min-w-[1.75rem] h-7 px-2.5 rounded-full bg-primary-light text-primary font-bold text-xs shadow-sm">
             {articleCount}
           </span>
         </div>
@@ -137,24 +137,24 @@ function ArticleForm({
   const isEditing = editingId !== null;
 
   return (
-    <div className="bg-surface rounded-2xl border border-border shadow-sm hover:shadow-md transition-shadow duration-300">
-      <div className="p-6 border-b border-border">
-        <h2 className="text-lg font-semibold text-foreground">
+    <div className="rounded-2xl pb-2 clean-card">
+      <div className="p-6 sm:p-8 border-b border-border">
+        <h2 className="text-2xl font-bold text-foreground">
           {isEditing ? "Edit Article" : "Create New Article"}
         </h2>
-        <p className="text-sm text-muted mt-1">
+        <p className="text-sm text-muted mt-1.5 font-medium">
           {isEditing
             ? "Update the fields below and save your changes."
             : "Fill in the details below to publish a new article."}
         </p>
       </div>
 
-      <div className="p-6 space-y-5">
+      <div className="p-6 sm:p-8 space-y-6">
         {/* Title */}
-        <div>
+        <div className="group">
           <label
             htmlFor="article-title"
-            className="block text-sm font-medium text-foreground mb-1.5"
+            className="block text-sm font-semibold text-foreground mb-2 group-focus-within:text-primary transition-colors"
           >
             Title
           </label>
@@ -164,33 +164,33 @@ function ArticleForm({
             placeholder="Enter article title…"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground placeholder:text-muted/60 text-sm transition-all duration-200"
+            className="w-full px-5 py-3 rounded-xl border border-border bg-background text-foreground placeholder:text-muted/60 text-base transition-all duration-200 focus:bg-white"
           />
         </div>
 
         {/* Content */}
-        <div>
+        <div className="group">
           <label
             htmlFor="article-content"
-            className="block text-sm font-medium text-foreground mb-1.5"
+            className="block text-sm font-semibold text-foreground mb-2 group-focus-within:text-primary transition-colors"
           >
             Content
           </label>
           <textarea
             id="article-content"
-            rows={4}
+            rows={5}
             placeholder="Write your article content…"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground placeholder:text-muted/60 text-sm resize-y min-h-[100px] transition-all duration-200"
+            className="w-full px-5 py-3 rounded-xl border border-border bg-background text-foreground placeholder:text-muted/60 text-base resize-y min-h-[120px] transition-all duration-200 focus:bg-white"
           />
         </div>
 
         {/* Author */}
-        <div>
+        <div className="group">
           <label
             htmlFor="article-author"
-            className="block text-sm font-medium text-foreground mb-1.5"
+            className="block text-sm font-semibold text-foreground mb-2 group-focus-within:text-primary transition-colors"
           >
             Author
           </label>
@@ -200,13 +200,13 @@ function ArticleForm({
             placeholder="Author name…"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
-            className="w-full px-4 py-2.5 rounded-xl border border-border bg-background text-foreground placeholder:text-muted/60 text-sm transition-all duration-200"
+            className="w-full px-5 py-3 rounded-xl border border-border bg-background text-foreground placeholder:text-muted/60 text-base transition-all duration-200 focus:bg-white"
           />
         </div>
       </div>
 
       {/* Actions */}
-      <div className="px-6 pb-6 flex items-center gap-3">
+      <div className="px-6 sm:px-8 pb-6 sm:pb-8 flex flex-wrap items-center gap-4">
         <button
           id="submit-article-btn"
           onClick={onSubmit}
@@ -215,15 +215,15 @@ function ArticleForm({
             !(title?.trim()) ||
             !(content?.trim())
           }
-          className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-white font-medium text-sm
+          className="inline-flex items-center gap-2.5 px-6 py-3 rounded-xl bg-primary text-white font-semibold text-sm
                      hover:bg-primary-hover active:scale-[0.97]
-                     disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100
-                     shadow-md shadow-primary/25 hover:shadow-lg hover:shadow-primary/30
+                     disabled:bg-muted disabled:opacity-50 disabled:cursor-not-allowed disabled:active:scale-100
+                     shadow-sm hover:shadow-md
                      transition-all duration-200 cursor-pointer"
         >
           {isSubmitting ? (
             <>
-              <SpinnerIcon className="w-4 h-4" />
+              <SpinnerIcon className="w-5 h-5" />
               {isEditing ? "Saving…" : "Publishing…"}
             </>
           ) : (
@@ -237,8 +237,8 @@ function ArticleForm({
         {isEditing && (
           <button
             onClick={onCancelEdit}
-            className="px-5 py-2.5 rounded-xl border border-border text-muted font-medium text-sm
-                       hover:bg-background hover:text-foreground
+            className="px-6 py-3 rounded-xl border border-border bg-background text-muted font-semibold text-sm
+                       hover:bg-surface hover:text-foreground hover:shadow-sm
                        transition-all duration-200 cursor-pointer"
           >
             Cancel
@@ -254,22 +254,20 @@ function ArticleCard({ article, onView, onEdit, onDelete, isDeleting }) {
   return (
     <article
       onClick={() => onView(article)}
-      className="group cursor-pointer bg-surface rounded-2xl border border-border shadow-sm
-                 hover:shadow-lg hover:border-primary/30 hover:-translate-y-0.5
-                 transition-all duration-300 flex flex-col"
+      className="group cursor-pointer clean-card rounded-2xl flex flex-col overflow-hidden"
     >
       {/* Card body */}
-      <div className="p-5 flex-1 flex flex-col">
+      <div className="p-6 flex-1 flex flex-col">
         {/* Author badge */}
-        <div className="mb-3">
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-light text-primary text-xs font-medium">
+        <div className="mb-4">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-primary-light text-primary text-xs font-semibold rounded-full">
             <span className="w-1.5 h-1.5 rounded-full bg-primary" />
             {article.author || "Unknown"}
           </span>
         </div>
 
         {/* Title */}
-        <h3 className="text-base font-semibold text-foreground leading-snug mb-2 line-clamp-2">
+        <h3 className="text-xl font-bold text-foreground leading-snug mb-3 line-clamp-2 group-hover:text-primary transition-colors duration-200">
           {article.title}
         </h3>
 
@@ -280,8 +278,8 @@ function ArticleCard({ article, onView, onEdit, onDelete, isDeleting }) {
       </div>
 
       {/* Card footer */}
-      <div className="px-5 py-3 border-t border-border flex items-center justify-between">
-        <span className="text-xs text-muted/70">
+      <div className="px-6 py-4 border-t border-border bg-surface flex items-center justify-between">
+        <span className="text-xs font-medium text-muted">
           {article.createdAt
             ? new Date(article.createdAt).toLocaleDateString("en-US", {
                 month: "short",
@@ -291,13 +289,13 @@ function ArticleCard({ article, onView, onEdit, onDelete, isDeleting }) {
             : "Just now"}
         </span>
 
-        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+        <div className="flex items-center gap-1 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-200">
           <button
             onClick={(e) => {
               e.stopPropagation();
               onEdit(article);
             }}
-            className="p-2 rounded-lg text-muted hover:text-primary hover:bg-primary-light transition-colors duration-150 cursor-pointer"
+            className="p-2 rounded-lg text-muted hover:text-primary hover:bg-primary-light transition-all duration-200 cursor-pointer"
             title="Edit"
           >
             <PencilIcon />
@@ -308,7 +306,7 @@ function ArticleCard({ article, onView, onEdit, onDelete, isDeleting }) {
               onDelete(article._id);
             }}
             disabled={isDeleting}
-            className="p-2 rounded-lg text-muted hover:text-danger hover:bg-red-50 transition-colors duration-150 disabled:opacity-40 cursor-pointer"
+            className="p-2 rounded-lg text-muted hover:text-danger hover:bg-red-50 transition-all duration-200 disabled:opacity-40 cursor-pointer"
             title="Delete"
           >
             {isDeleting ? (
@@ -326,10 +324,12 @@ function ArticleCard({ article, onView, onEdit, onDelete, isDeleting }) {
 /* ───────── Empty State ───────── */
 function EmptyState() {
   return (
-    <div className="col-span-full flex flex-col items-center justify-center py-20 text-center">
-      <DocumentIcon />
-      <h3 className="mt-4 text-lg font-semibold text-foreground">
-        No articles yet
+    <div className="col-span-full flex flex-col items-center justify-center py-24 text-center clean-card rounded-2xl mx-auto w-full max-w-2xl px-6">
+      <div className="p-6 bg-primary-light rounded-full mb-4 inline-block text-primary">
+        <DocumentIcon />
+      </div>
+      <h3 className="text-xl font-bold text-foreground">
+        No articles found
       </h3>
       <p className="mt-1 text-sm text-muted max-w-sm">
         Get started by creating your first article using the form above. Your
@@ -460,9 +460,9 @@ export default function Home() {
     <div className="flex flex-col min-h-screen">
       <Navbar articleCount={articles.length} />
 
-      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10">
+      <main className="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
         {/* ── Form Section ─── */}
-        <section className="max-w-2xl">
+        <section className="max-w-3xl mx-auto">
           <ArticleForm
             title={title}
             setTitle={setTitle}
@@ -520,7 +520,7 @@ export default function Home() {
             onClick={handleCloseModal}
           >
             <div
-              className="bg-surface rounded-2xl shadow-xl max-w-2xl w-full p-6 relative max-h-[80vh] overflow-hidden"
+              className="bg-surface rounded-2xl shadow-xl max-w-2xl w-full p-8 relative max-h-[85vh] overflow-hidden border border-border"
               onClick={(e) => e.stopPropagation()}
             >
               <button

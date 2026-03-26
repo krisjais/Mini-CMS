@@ -51,15 +51,16 @@ export default function ArticlePage() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      
       {/* Navbar Match */}
-      <header className="sticky top-0 z-50 bg-surface/80 backdrop-blur-lg border-b border-border">
+      <header className="sticky top-0 z-50 bg-surface border-b border-border shadow-sm">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3 cursor-pointer" onClick={() => router.push('/')}>
-            <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-primary to-purple-500 flex items-center justify-center shadow-md shadow-primary/25">
-              <span className="text-white font-bold text-sm">CM</span>
+          <div className="flex items-center gap-3 cursor-pointer group" onClick={() => router.push('/')}>
+            <div className="w-9 h-9 rounded-xl bg-primary flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-200">
+              <span className="text-white font-bold text-sm tracking-widest">CM</span>
             </div>
-            <h1 className="text-xl font-semibold tracking-tight text-foreground">
-              Mini CMS
+            <h1 className="text-xl font-bold tracking-tight text-foreground group-hover:opacity-80 transition-opacity duration-200">
+              Mini <span className="text-primary">CMS</span>
             </h1>
           </div>
         </div>
@@ -68,10 +69,10 @@ export default function ArticlePage() {
       <main className="flex-1 w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <button
           onClick={() => router.back()}
-          className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-xl border border-border bg-surface text-muted hover:text-foreground hover:bg-background transition-all cursor-pointer"
+          className="inline-flex items-center gap-2 mb-8 px-4 py-2.5 rounded-xl border border-border bg-surface hover:bg-background hover:text-primary transition-all duration-200 cursor-pointer shadow-sm text-muted font-semibold"
         >
           <ArrowLeftIcon />
-          <span className="font-medium text-sm">Back</span>
+          <span className="text-sm">Back to Articles</span>
         </button>
 
         {loading ? (
@@ -84,20 +85,20 @@ export default function ArticlePage() {
             <p className="text-muted">{error}</p>
           </div>
         ) : article ? (
-          <div className="bg-surface rounded-3xl border border-border shadow-md p-8 sm:p-12">
+          <div className="clean-card rounded-2xl p-8 sm:p-12 mb-10">
             <header className="mb-8 border-b border-border pb-8">
-              <h1 className="text-3xl sm:text-4xl font-extrabold text-foreground leading-tight tracking-tight mb-5">
+              <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground leading-tight tracking-tight mb-6">
                 {article.title}
               </h1>
               
               <div className="flex flex-wrap items-center gap-4 text-sm">
-                <div className="inline-flex items-center gap-2 bg-primary-light text-primary px-3 py-1.5 rounded-full font-semibold">
+                <div className="inline-flex items-center gap-2 bg-primary-light text-primary px-4 py-1.5 rounded-full font-bold uppercase tracking-wider text-xs">
                   <div className="w-2 h-2 rounded-full bg-primary" />
                   {article.author || "Unknown Author"}
                 </div>
                 
                 {article.createdAt && (
-                  <span className="text-muted/80 font-medium">
+                  <span className="text-muted font-medium text-sm">
                     {new Date(article.createdAt).toLocaleDateString("en-US", {
                       year: "numeric",
                       month: "short",
