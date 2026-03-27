@@ -35,10 +35,10 @@ This project is built using modern web development technologies:
 
 
 ### Article Page
-![Article Page Placeholder](https://placehold.co/600x400/png?text=Article+Page+Screenshot)
+![Article Page](./public/ss1.png)
 
 ### Create Form
-![Create Form Placeholder](https://placehold.co/600x400/png?text=Create+Form+Screenshot)
+![Create Form Placeholder](./public/ss2.png)
 
 ---
 
