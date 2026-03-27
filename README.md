@@ -31,7 +31,7 @@ This project is built using modern web development technologies:
 ## 📸 Screenshots
 
 ### Home Page
-![Home Page Placeholder](https://placehold.co/600x400/png?text=Home+Page+Screenshot)
+![Home Page Placeholder](Screenshot From 2026-03-27 10-16-14.png)
 
 ### Article Page
 ![Article Page Placeholder](https://placehold.co/600x400/png?text=Article+Page+Screenshot)
