@@ -123,6 +123,9 @@ Here are some features planned for future releases:
 - [ ] **Rich Text Editor**: Integrate tools like Quill or TipTap for advanced formatting capabilities.
 - [ ] **Deployment Improvements**: Optimize the build process and add CI/CD pipelines. -->
 
+## 📄 Documentation
+[View Project Documentation](./docs/project-doc.pdf)
+
 ---
 
 ## 👤 Author
@@ -133,5 +136,3 @@ Here are some features planned for future releases:
 
 *If you found this project helpful, please consider giving it a ⭐ on GitHub!*
 
-## 📄 Documentation
-[View Project Documentation](./docs/project-doc.pdf)
