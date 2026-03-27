@@ -1,6 +1,6 @@
 # 📝 Mini CMS Frontend
 
-![Mini CMS Banner](https://via.placeholder.com/800x200?text=Mini+CMS+Frontend) <!-- Optional Banner Placeholder -->
+![Mini CMS Banner](https://placehold.co/800x200/png?text=Mini+CMS+Frontend) <!-- Optional Banner Placeholder -->
 
 A modern, fast, and responsive frontend application for a Content Management System (CMS). This project interacts with a robust backend API to seamlessly manage and display articles.
 
@@ -31,13 +31,13 @@ This project is built using modern web development technologies:
 ## 📸 Screenshots
 
 ### Home Page
-![Home Page Placeholder](https://via.placeholder.com/600x400?text=Home+Page+Screenshot)
+![Home Page Placeholder](https://placehold.co/600x400/png?text=Home+Page+Screenshot)
 
 ### Article Page
-![Article Page Placeholder](https://via.placeholder.com/600x400?text=Article+Page+Screenshot)
+![Article Page Placeholder](https://placehold.co/600x400/png?text=Article+Page+Screenshot)
 
 ### Create Form
-![Create Form Placeholder](https://via.placeholder.com/600x400?text=Create+Form+Screenshot)
+![Create Form Placeholder](https://placehold.co/600x400/png?text=Create+Form+Screenshot)
 
 ---
 
@@ -110,7 +110,7 @@ cms-fronted/
 
 The backend for this project is built with Node.js, Express, and MongoDB.
 
-👉 **[Link to Backend Repository](#)** _(Update with actual backend repository link)_
+👉 **[Link to Backend Repository](https://github.com/krisjais/Mini-CMS-backend)** _(Update with actual backend repository link)_
 
 ---
 
