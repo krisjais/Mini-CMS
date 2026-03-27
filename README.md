@@ -48,7 +48,7 @@ Follow these steps to run the application locally.
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/mini-cms-frontend.git
+git clone https://github.com/krisjais/Mini-CMS.git
 cd mini-cms-frontend
 ```
 
@@ -115,13 +115,13 @@ The backend for this project is built with Node.js, Express, and MongoDB.
 
 ---
 
-## 🔮 Future Improvements
+<!-- ## 🔮 Future Improvements
 
 Here are some features planned for future releases:
 
 - [ ] **Authentication & Admin Panel**: Secure the CMS to restrict access to authorized users only.
 - [ ] **Rich Text Editor**: Integrate tools like Quill or TipTap for advanced formatting capabilities.
-- [ ] **Deployment Improvements**: Optimize the build process and add CI/CD pipelines.
+- [ ] **Deployment Improvements**: Optimize the build process and add CI/CD pipelines. -->
 
 ---
 
