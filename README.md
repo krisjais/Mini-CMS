@@ -132,3 +132,6 @@ Here are some features planned for future releases:
 ---
 
 *If you found this project helpful, please consider giving it a ⭐ on GitHub!*
+
+## 📄 Documentation
+[View Project Documentation](./docs/project-doc.pdf)
