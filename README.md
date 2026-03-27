@@ -31,7 +31,7 @@ This project is built using modern web development technologies:
 ## 📸 Screenshots
 
 ### Home Page
-![Home Page Placeholder](ss.png)
+![Home Page](./public/ss.png)
 
 
 ### Article Page
