@@ -111,7 +111,7 @@ cms-fronted/
 
 The backend for this project is built with Node.js, Express, and MongoDB.
 
-👉 **[Link to Backend Repository](https://github.com/krisjais/Mini-CMS-backend)** _(Update with actual backend repository link)_
+👉 **[Link to Backend Repository](https://github.com/krisjais/Mini-CMS-backend)** 
 
 ---
 
